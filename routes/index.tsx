@@ -7,6 +7,9 @@ export default function Home() {
       <Head>
         <title>Fresh App</title>
       </Head>
+      <nav class="p-4 mx-auto max-w-screen-md">
+        <a href="/info">Info</a>
+      </nav>
       <div class="p-4 mx-auto max-w-screen-md">
         <img
           src="/logo.svg"
@@ -14,9 +17,9 @@ export default function Home() {
           alt="the fresh logo: a sliced lemon dripping with juice"
         />
         <p class="my-6">
-          Welcome to `fresh`. Try updating this message in the ./routes/index.tsx
-          file, and refresh.
+          Welcome to `fresh`. This is satic HTML server from ./routes/index.tsxfile.
         </p>
+        <p>And here we have a dynamic island:</p>
         <Counter start={3} />
       </div>
     </>
