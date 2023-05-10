@@ -5,8 +5,9 @@ import Countdown from "../islands/Countdown.tsx";
 import Counter from "../islands/Counter.tsx";
 
 export const handler: Handlers = {
-  async GET(req, ctx) {
-    const resp = await fetch('http://localhost:8000/api/joke');
+  async GET(req: Request, ctx) {
+    const url = new URL(req.url);
+    const resp = await fetch(`${url.protocol}//${url.host}/api/joke`);
     const joke = await resp.text();
     return ctx.render({joke})
   }
