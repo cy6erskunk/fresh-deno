@@ -9,11 +9,11 @@ export const handler: Handlers = {
     const url = new URL(req.url);
     const resp = await fetch(`${url.protocol}//${url.host}/api/joke`);
     const joke = await resp.text();
-    return ctx.render({joke})
-  }
-}
+    return ctx.render({ joke });
+  },
+};
 
-export default function Home({data}: PageProps<{joke: string}>) {
+export default function Home({ data }: PageProps<{ joke: string }>) {
   const date = new Date();
   date.setSeconds(date.getSeconds() + 10);
 
@@ -30,13 +30,14 @@ export default function Home({data}: PageProps<{joke: string}>) {
           alt="the fresh logo: a sliced lemon dripping with juice"
         />
         <p class="my-6">
-          Welcome to `fresh`. This is satic HTML server from ./routes/index.tsxfile.
+          Welcome to `fresh`. This is satic HTML server from
+          ./routes/index.tsxfile.
         </p>
         <p>And here we have a dynamic island:</p>
         <Counter start={3} />
         <p>{data?.joke ? data.joke : "No kidding then"}</p>
         <p>And another island:</p>
-        <Countdown target={date.toISOString()}/>
+        <Countdown target={date.toISOString()} />
       </div>
     </>
   );

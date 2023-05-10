@@ -6,7 +6,7 @@ const timeFmt = new Intl.RelativeTimeFormat("en-US");
 
 // The target date is passed as a string instead of as a `Date`, because the
 // props to island components need to be JSON (de)serializable.
-export default function Countdown(props: {target: string}) {
+export default function Countdown(props: { target: string }) {
   const target = new Date(props.target);
   const [now, setNow] = useState(new Date());
 
@@ -19,12 +19,12 @@ export default function Countdown(props: {target: string}) {
         return new Date();
       });
       return () => clearInterval(timer);
-    }, 500)
-  }, [props.target])
+    }, 500);
+  }, [props.target]);
 
   if (now >= target) {
-    return (<span>🐼</span>);
+    return <span>🐼</span>;
   } else {
-    return (<span>{Math.floor((target.getTime() - now.getTime())/1000)}</span>);
+    return <span>{Math.floor((target.getTime() - now.getTime()) / 1000)}</span>;
   }
 }
