@@ -1,5 +1,6 @@
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import { Nav } from "../components/Navigation.tsx";
 import Counter from "../islands/Counter.tsx";
 
 export const handler: Handlers = {
@@ -16,9 +17,7 @@ export default function Home({data}: PageProps<{joke: string}>) {
       <Head>
         <title>Fresh App</title>
       </Head>
-      <nav class="p-4 mx-auto max-w-screen-md">
-        <a href="/info">Info</a>
-      </nav>
+      <Nav />
       <div class="p-4 mx-auto max-w-screen-md">
         <img
           src="/logo.svg"
