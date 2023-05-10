@@ -1,6 +1,7 @@
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { Nav } from "../components/Navigation.tsx";
+import Countdown from "../islands/Countdown.tsx";
 import Counter from "../islands/Counter.tsx";
 
 export const handler: Handlers = {
@@ -12,6 +13,9 @@ export const handler: Handlers = {
 }
 
 export default function Home({data}: PageProps<{joke: string}>) {
+  const date = new Date();
+  date.setHours(date.getHours() + 1);
+
   return (
     <>
       <Head>
@@ -30,6 +34,8 @@ export default function Home({data}: PageProps<{joke: string}>) {
         <p>And here we have a dynamic island:</p>
         <Counter start={3} />
         <p>{data?.joke ? data.joke : "No kidding then"}</p>
+        <p>And another island:</p>
+        <Countdown target={date.toISOString()}/>
       </div>
     </>
   );
