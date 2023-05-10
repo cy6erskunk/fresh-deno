@@ -1,6 +1,6 @@
 // islands/Countdown.tsx
 
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 const timeFmt = new Intl.RelativeTimeFormat("en-US");
 
@@ -8,11 +8,23 @@ const timeFmt = new Intl.RelativeTimeFormat("en-US");
 // props to island components need to be JSON (de)serializable.
 export default function Countdown(props: {target: string}) {
   const target = new Date(props.target);
-  const [now] = useState(new Date());
+  const [now, setNow] = useState(new Date());
 
-  if (now > target) {
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setNow((now) => {
+        if (now >= target) {
+          clearInterval(timer);
+        }
+        return new Date();
+      });
+      return () => clearInterval(timer);
+    }, 500)
+  }, [props.target])
+
+  if (now >= target) {
     return (<span>🐼</span>);
   } else {
-    return (<span>⏰</span>);
+    return (<span>{Math.floor((target.getTime() - now.getTime())/1000)}</span>);
   }
 }

@@ -14,7 +14,7 @@ export const handler: Handlers = {
 
 export default function Home({data}: PageProps<{joke: string}>) {
   const date = new Date();
-  date.setHours(date.getHours() + 1);
+  date.setSeconds(date.getSeconds() + 10);
 
   return (
     <>
