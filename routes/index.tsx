@@ -3,11 +3,12 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { Nav } from "../components/Navigation.tsx";
 import Countdown from "../islands/Countdown.tsx";
 import Counter from "../islands/Counter.tsx";
+import {handler as jokeHandler} from "./api/joke.ts"
 
 export const handler: Handlers = {
   async GET(req: Request, ctx) {
     const url = new URL(req.url);
-    const resp = await fetch(`${url.protocol}//${url.host}/api/joke`);
+    const resp = jokeHandler(req, ctx);
     const joke = await resp.text();
     return ctx.render({ joke });
   },
