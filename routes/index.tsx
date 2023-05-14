@@ -3,7 +3,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { Nav } from "../components/Navigation.tsx";
 import Countdown from "../islands/Countdown.tsx";
 import Counter from "../islands/Counter.tsx";
-import {handler as jokeHandler} from "./api/joke.ts"
+import { handler as jokeHandler } from "./api/joke.ts";
 
 export const handler: Handlers = {
   async GET(req: Request, ctx) {
